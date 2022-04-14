@@ -17,7 +17,7 @@ public class Calculator {
             "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII",
             "XCVIII", "XCIX", "C"};
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("Добро пожаловать в калькулятор!");
         System.out.println("Введите операцию, которую необходимо выполнить: ");
         System.out.println("///Данные необходимо вводить в формате 5 + 5 или V - V через пробел. " +
@@ -31,46 +31,48 @@ public class Calculator {
                 number1 = x + 1;
                 rom1 = true;
                 break;
-            }else if((number1 == -1)&(x == 9))try{
-                number1 = Integer.parseInt(elements[0]);}
-            catch (Throwable t) {
+            } else if ((number1 == -1) & (x == 9)) try {
+                number1 = Integer.parseInt(elements[0]);
+            } catch (Throwable t) {
                 throw new IllegalArgumentException("Введены неверные данные1!");
-            }}
+            }
+        }
         for (int y = 0; y < 10; y++) {
             if (elements[2].equals(rome[y])) {
                 number2 = y + 1;
                 rom2 = true;
                 break;
-            }else if((number2 == -1)&(y == 9))try{
-                number2 = Integer.parseInt(elements[2]);}
-            catch (Throwable t) {
+            } else if ((number2 == -1) & (y == 9)) try {
+                number2 = Integer.parseInt(elements[2]);
+            } catch (Throwable t) {
                 throw new IllegalArgumentException("Введены неверные данные2!");
-            }}
+            }
+        }
 
         opera = elements[1].charAt(0);
 
-        if ((opera != '+')&&(opera != '-')&&(opera != '*')&&(opera != '/')){
+        if ((opera != '+') && (opera != '-') && (opera != '*') && (opera != '/')) {
             throw new IllegalArgumentException("Неверная операция");
         }
 
         if ((number1 < 1 || number1 > 10) || (number2 < 1 || number2 > 10)) {
             throw new IllegalArgumentException("Выход из диапозона допустимых значений [от 1 до 10]");
         }
-        if (((rom1)&(!rom2))||((!rom1)&(rom2))) {
+        if (((rom1) & (!rom2)) || ((!rom1) & (rom2))) {
             throw new IllegalArgumentException("Введённые данные недопустимы! Могут быть использованы только римские или арабские цифры");
         }
 
-        if((rom1)&(rom2)){
+        if ((rom1) & (rom2)) {
             result = calculate(number1, number2, opera);
             String resultRoman = RomeToArab(result);
-            System.out.println("Ответ: "+resultRoman);
+            System.out.println("Ответ: " + resultRoman);
         } else {
             result = calculate(number1, number2, opera);
-            System.out.println("Ответ: "+result);
+            System.out.println("Ответ: " + result);
         }
     }
 
-    static int calculate(int a, int b, char op){
+    static int calculate(int a, int b, char op) {
         int answer = 0;
         switch (op) {
             case '+':
